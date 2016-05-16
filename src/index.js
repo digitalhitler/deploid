@@ -33,16 +33,25 @@
 
 'use strict';
 
+const fs = require('fs');
+
+
 //noinspection InjectedReferences
 global.Deploid = {
   __properlyStarted: true,
   __rootPath: __dirname,
   __libs: {
     /**
-     * meow: CLI app commands, flags & arguments parser.
-     * https://github.com/sindresorhus/meow
+     * eventemitter3: painless events subscription API.
+     * https://github.com/primus/eventemitter3
      */
-    meow: require('meow'),
+    eventemitter: require('eventemitter3'),
+
+    /**
+     * commander: CLI app router - commands, flags & arguments done right.
+     * https://github.com/tj/commander.js/
+     */
+    commander: require('commander'),
 
     /**
      * inquirer: CLI questions & answers framework
@@ -71,12 +80,13 @@ global.Deploid = {
 };
 
 Deploid.resolve = require('./utils/resolve');
+
 Deploid.config = require('./utils/config')(Deploid);
 Deploid.localize = require('./utils/localize')(Deploid);
 
 Deploid.formatters = require('./utils/formatters');
 Deploid.router = require('./utils/router');
 
-Deploid.formatters.printError('lalalej', true);
-
-console.log("And here");
+//Deploid.formatters.printError('lalalej', true);
+console.log('Router:');
+console.log(Deploid.router);

@@ -31,18 +31,30 @@
 
 
 module.exports = {
-  'key': 'en',
-  'fullkey': 'english',
-  'name': 'English',
-  'name_localized': 'English',
-  'set': 'Окей, теперь всё будет по-русски.',
-  'app': {
-    'name': 'Deploid', 'headline': ' Deploid          ' + '\n Version %1'
+  key: 'en',
+  fullkey: 'english',
+  name: 'English',
+  name_localized: 'English',
+  set: 'Окей, теперь всё будет по-русски.',
+  app: {
+    name: 'Deploid', headline: ' Deploid          ' + '\n Version %1'
   },
-  'general' : {
-    'error': {
+  general : {
+    error: {
       'headline': 'Произошла ошибка:',
       'exitFootline': 'Продолжение невозможно, Deploid будет остановлен.'
+    }
+  },
+  help: {
+    commands_common: {
+      usage: "Usage",
+      commands: "Commands",
+      options: "Options",
+      moreinfo: "Additional information",
+      see: "See also"
+    },
+    commands: {
+      default: "Usage: deploid [options] <command> [<args>]"
     }
   }
 };

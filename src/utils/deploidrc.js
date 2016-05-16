@@ -1,13 +1,13 @@
 /*
  *     @project
  *     Deploid
- *
- *     @file
- *     errors/profile-not-initialized.js
+ *     
+ *     utils/deploidrc.js
+ *     Facade for .deploidrc - main project configuration file
  *
  *     @link
  *     https://github.com/digitalhitler/deploid
- *
+ *  
  *     @copyright
  *     Copyright (c) 2016.
  *     Sergey Petrenko <spetrenko@me.com>
@@ -30,14 +30,8 @@
 
 'use strict';
 
-function ProfileNotIntializedError(message) {
-  this.message = message;
-  this.stack = new Error().stack;
-  this.statusCode = 500;
-  this.errorType = this.name;
+if(!global.Deploid || global.Deploid.__properlyStarted !== true) {
+  console.log('Please use src/index.js to start Deploid.');
+  process.exit(1);
 }
 
-ProfileNotIntializedError.prototype = Object.create(Error.prototype);
-ProfileNotIntializedError.prototype.name = 'ProfileNotIntializedError';
-
-module.exports = ProfileNotIntializedError;

@@ -3,9 +3,8 @@
  *     Deploid
  *
  *     @file
- *     {$FILENAME}
- *     com.maddyhome.idea.copyright.pattern.FileInfo@16614b28
- *     $filename
+ *     utils/router.js
+ *     CLI routing entry point
  *
  *     @link
  *     https://github.com/digitalhitler/deploid
@@ -37,8 +36,24 @@ if(!global.Deploid || global.Deploid.__properlyStarted !== true) {
   process.exit(1);
 }
 
-const meow = Deploid.__libs.meow || require('meow');
+Deploid.cli = Deploid.__libs.commander || require('commander');
 
 module.exports = (function() {
-  return meow;
+
+  Deploid.cli
+      .version(Deploid.config.packageFile.version)
+      .option('-d, --dir <path>', 'change the working directory')
+      .option('-c, --config <path>', 'set config path. defaults to' +
+          ' ./deploid.json')
+      .option('-v, --verbose', 'verbose (debug) output');
+
+  Deploid.cli.command('init')
+      .description('initialize new deploid configuration')
+      .action(function() {
+
+      });
+
+  Deploid.cli.parse(process.argv);
+
+  return Deploid.cli;
 })();
